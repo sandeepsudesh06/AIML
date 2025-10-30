@@ -1,65 +1,98 @@
-<!-- ========== SHARED HEADER (paste at top of <body>) ========== -->
-<header style="padding:22px 0;border-bottom:1px solid #1b2a3a;background:#0c1118;">
-  <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
-    <a href="/AIML/" style="font-weight:700;color:#e9eef5;text-decoration:none;font-size:18px;">Sandeep · AI/ML Portfolio</a>
-    <nav style="margin-left:auto;display:flex;gap:14px;">
-      <a href="/AIML/" style="color:#8cc8ff;text-decoration:none;">Home</a>
-      <a href="/AIML/about.html" style="color:#8cc8ff;text-decoration:none;">About</a>
-      <a href="/AIML/value-proposition.html" style="color:#8cc8ff;text-decoration:none;">Value Proposition</a>
-      <a href="/AIML/artifacts/" style="color:#8cc8ff;text-decoration:none;">Artifacts</a>
-      <a href="mailto:sandeepsudesh06@gmail.com" style="color:#8cc8ff;text-decoration:none;">Contact</a>
-    </nav>
-  </div>
-</header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandeep Sudesh Kumar · AI/ML Portfolio</title>
+  <meta name="description" content="AI/ML portfolio of Sandeep Sudesh Kumar — Indiana Wesleyan University (Data Analytics).">
+  <style>
+    :root { --w: 960px; }
+    /* Base */
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#0b0f14; color:#e9eef5; }
+    a { color:#8cc8ff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .wrap { max-width: var(--w); margin:0 auto; }
+    .small { font-size: 15px; color:#b8c5d6; }
+    /* Header / Nav */
+    header { padding:22px 0; border-bottom:1px solid #1b2a3a; background:#0c1118; }
+    .nav { padding:0 20px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+    .brand { font-weight:700; color:#e9eef5; font-size:18px; }
+    .navlinks { margin-left:auto; display:flex; gap:14px; }
+    /* Sections */
+    main { padding:28px 20px 60px; }
+    section { border:1px solid #1b2a3a; background:#0f1520; border-radius:16px; padding:22px; margin:16px 0; }
+    h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); }
+    h2 { margin:0 0 10px; font-size:20px; }
+    h3 { margin:16px 0 6px; font-size:16px; }
+    .pill { padding:4px 8px; border:1px solid #2a4058; border-radius:999px; font-size:12px; margin-right:6px; display:inline-block; }
+    .btn { display:inline-block; padding:10px 14px; border:1px solid #2a4058; border-radius:10px; background:#0f1a28; }
+    .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    /* Footer */
+    footer { margin-top:48px; padding:28px 0; border-top:1px solid #1b2a3a; background:#0c1118; color:#b8c5d6; }
+    .foot { padding:0 20px; display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  </style>
+</head>
+<body>
 
-<main class="wrap" style="max-width:960px;margin:0 auto;padding:28px 20px 60px;">
-  <section style="border:1px solid #1b2a3a;background:#0f1520;border-radius:16px;padding:22px;margin:16px 0;">
-    <h1 style="margin:0 0 8px;">Turning messy data into confident decisions</h1>
-    <p class="small" style="font-size:15px;color:#b8c5d6;">
-      I’m <strong>Sandeep Sudesh Kumar</strong>, M.S. in Artificial Intelligence (Data Analytics) at Indiana Wesleyan University.
-      I design human-centered, data-driven solutions with clear communication and reproducible workflows.
-    </p>
-    <p>
-      <span class="pill">AI/ML</span>
-      <span class="pill">Data Engineering</span>
-      <span class="pill">Visualization</span>
-      <span class="pill">Business Analysis</span>
-    </p>
-  </section>
-
-  <section style="border:1px solid #1b2a3a;background:#0f1520;border-radius:16px;padding:22px;margin:16px 0;">
-    <h2 style="margin:0 0 10px;">Featured Artifact</h2>
-    <div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-      <div>
-        <h3>AI Lab: Motivation Scenario</h3>
-        <p><strong>Objective:</strong> Design an empathetic AI conversation that helps a distracted user regain momentum.</p>
-        <p><strong>Process:</strong> Map user state → tiny steps → reflection loop; iterate prompts and tone using design-thinking feedback.</p>
-        <p><strong>Value:</strong> Demonstrates supportive, trustworthy AI interactions that encourage action.</p>
-        <p><a class="btn" href="/AIML/artifacts/artifact-01.html">Read the artifact →</a></p>
-      </div>
-      <div>
-        <p><a class="btn" href="https://chatgpt.com/g/g-6902803e909481919086f3e8031667e1-focusmate" target="_blank" rel="noopener">Open the FocusMate Chatbot →</a></p>
-      </div>
+  <!-- Header / Nav -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/AIML/">Sandeep · AI/ML Portfolio</a>
+      <nav class="navlinks">
+        <a href="/AIML/">Home</a>
+        <a href="/AIML/about.html">About</a>
+        <a href="/AIML/value-proposition.html">Value Proposition</a>
+        <a href="/AIML/artifacts/">Artifacts</a>
+        <a href="mailto:sandeepsudesh06@gmail.com">Contact</a>
+      </nav>
     </div>
-  </section>
-</main>
+  </header>
 
+  <!-- Main -->
+  <main class="wrap">
+    <section>
+      <h1>Turning messy data into confident decisions</h1>
+      <p class="small">
+        I’m <strong>Sandeep Sudesh Kumar</strong>, M.S. in Artificial Intelligence (Data Analytics) at Indiana Wesleyan University.
+        I design human-centered, data-driven solutions with clear communication and reproducible workflows.
+      </p>
+      <p>
+        <span class="pill">AI/ML</span>
+        <span class="pill">Data Engineering</span>
+        <span class="pill">Visualization</span>
+        <span class="pill">Business Analysis</span>
+      </p>
+    </section>
 
+    <section>
+      <h2>Featured Artifact</h2>
+      <div class="grid">
+        <div>
+          <h3>AI Lab: Motivation Scenario</h3>
+          <p><strong>Objective:</strong> Design an empathetic AI conversation that helps a distracted user regain momentum.</p>
+          <p><strong>Process:</strong> Map user state → tiny steps → reflection loop; iterate prompts and tone using design-thinking feedback.</p>
+          <p><strong>Value:</strong> Demonstrates supportive, trustworthy AI interactions that encourage action.</p>
+          <p><a class="btn" href="/AIML/artifacts/artifact-01.html">Read the artifact →</a></p>
+        </div>
+        <div>
+          <p><a class="btn" href="https://chatgpt.com/g/g-6902803e909481919086f3e8031667e1-focusmate" target="_blank" rel="noopener">Open the FocusMate Chatbot →</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-
-
-
-
-<!-- ========== SHARED FOOTER (paste above </body>) ========== -->
-<footer style="margin-top:48px;padding:28px 0;border-top:1px solid #1b2a3a;background:#0c1118;color:#b8c5d6;">
-  <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
-    <div>© <span id="y"></span> Sandeep Sudesh Kumar</div>
-    <div>·</div>
-    <div><a href="mailto:sandeepsudesh06@gmail.com" style="color:#8cc8ff;text-decoration:none;">Email</a></div>
-    <div>·</div>
-    <div><a href="https://www.linkedin.com/in/sandeep-sudesh-kumar" target="_blank" rel="noopener" style="color:#8cc8ff;text-decoration:none;">LinkedIn</a></div>
-    <div>·</div>
-    <div><a href="https://github.com/sandeepsudesh06" target="_blank" rel="noopener" style="color:#8cc8ff;text-decoration:none;">GitHub</a></div>
-  </div>
-</footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- Footer -->
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Sandeep Sudesh Kumar</div>
+      <div>·</div>
+      <div><a href="mailto:sandeepsudesh06@gmail.com">Email</a></div>
+      <div>·</div>
+      <div><a href="https://www.linkedin.com/in/sandeep-sudesh-kumar" target="_blank" rel="noopener">LinkedIn</a></div>
+      <div>·</div>
+      <div><a href="https://github.com/sandeepsudesh06" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
