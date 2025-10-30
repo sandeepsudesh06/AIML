@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandeep Sudesh Kumar · AI/ML Portfolio</title>
+  <style>
+    :root { --w: 900px; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#0b0f14; color:#e9eef5; }
+    header { padding:56px 20px; background:linear-gradient(135deg,#0b0f14 0%, #111b2a 50%, #0b0f14 100%); border-bottom:1px solid #1b2a3a; }
+    .wrap { max-width: var(--w); margin:0 auto; }
+    h1 { font-size: clamp(28px, 4vw, 40px); margin:0 0 8px; }
+    .tag { display:inline-block; padding:6px 10px; border:1px solid #24374b; border-radius:999px; font-size:12px; letter-spacing:.3px; }
+    main { padding:28px 20px 60px; }
+    section { border:1px solid #1b2a3a; background:#0f1520; border-radius:16px; padding:22px; margin:16px 0; }
+    h2 { margin:0 0 10px; font-size:20px; }
+    h3 { margin:16px 0 6px; font-size:16px; }
+    a { color:#8cc8ff; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .btn { display:inline-block; padding:10px 14px; border:1px solid #2a4058; border-radius:10px; background:#0f1a28; }
+    footer { padding:30px 20px; border-top:1px solid #1b2a3a; color:#b8c5d6; }
+    ul { margin:8px 0 0 18px; }
+    .small { font-size:13px; color:#b8c5d6; }
+    .pill { padding:4px 8px; border:1px solid #2a4058; border-radius:999px; font-size:12px; margin-right:6px; display:inline-block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="tag">Professional Portfolio</div>
+      <h1>Hi, I’m <strong>Sandeep Sudesh Kumar</strong></h1>
+      <p class="small">M.S. in Artificial Intelligence (Data Analytics), Indiana Wesleyan University</p>
+      <p>
+        <span class="pill">AI/ML</span>
+        <span class="pill">Data Engineering</span>
+        <span class="pill">Visualization</span>
+        <span class="pill">Business Analysis</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Personal Value Proposition</h2>
+      <p>
+        I combine analytical thinking with empathy-driven design to build data-informed, human-centered AI solutions.
+        My strengths are in <strong>data engineering</strong>, <strong>visualization</strong>, and <strong>clear stakeholder communication</strong> that turn complex problems into actionable outcomes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Artifact 1 — AI Lab: Motivation Scenario</h2>
+      <div class="grid">
+        <div>
+          <h3>Objective</h3>
+          <p>Demonstrate empathetic conversation design and motivational scaffolding using a guided AI chat flow.</p>
+          <h3>Process</h3>
+          <ul>
+            <li>Mapped user state → tiny-steps plan → reflection loop</li>
+            <li>Iterated tone & prompts using design-thinking feedback</li>
+            <li>Documented outcomes and improvement notes</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools & Tech</h3>
+          <ul>
+            <li>ChatGPT (prompt design + iteration)</li>
+            <li>Portfolio write-up (this page)</li>
+          </ul>
+          <h3>Value</h3>
+          <p>Shows my ability to craft supportive AI interactions that drive engagement and momentum.</p>
+          <p><a class="btn" href="https://chatgpt.com/g/g-6902803e909481919086f3e8031667e1-focusmate" target="_blank" rel="noopener">View the FocusMate Chatbot →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>More Artifacts (Coming Soon)</h2>
+      <ul>
+        <li>AI & ML Timeline</li>
+        <li>Professional Self-Assessment</li>
+        <li>Data Cleaning Project (Excel + Python)</li>
+        <li>Visualization Project (Power BI)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>About & Contact</h2>
+      <p><strong>Email:</strong> <a href="mailto:sandeepsudesh06@gmail.com">sandeepsudesh06@gmail.com</a><br/>
+         <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sandeep-sudesh-kumar" target="_blank" rel="noopener">linkedin.com/in/sandeep-sudesh-kumar</a></p>
+      <p class="small"><em>AI Acknowledgment:</em> GPT-5 Thinking assisted with structure and wording; all ideas and final edits are my own.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap small">© <span id="y"></span> Sandeep Sudesh Kumar • Built with GitHub Pages</div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
