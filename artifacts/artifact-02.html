@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Artifact 2 — Machine Learning vs Deep Learning</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f14;color:#e9eef5}
+    a{color:#8cc8ff;text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+    section{border:1px solid #1b2a3a;background:#0f1520;border-radius:16px;padding:22px;margin:16px 0}
+    ul,ol{margin:8px 0 0 18px}
+    .badge{display:inline-block;padding:4px 8px;border:1px solid #2a4058;border-radius:999px;font-size:12px;margin-right:6px}
+    h1{margin:0 0 8px;font-size:clamp(26px,4vw,34px)}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{border:1px solid #223448;padding:10px;vertical-align:top}
+    th{background:#0c1622;text-align:left}
+    .note{color:#b8c5d6;font-size:14px}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header style="padding:22px 0;border-bottom:1px solid #1b2a3a;background:#0c1118;">
+    <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="/AIML/" style="font-weight:700;color:#e9eef5;text-decoration:none;font-size:18px;">Sandeep · AI/ML Portfolio</a>
+      <nav style="margin-left:auto;display:flex;gap:14px;">
+        <a href="/AIML/">Home</a>
+        <a href="/AIML/about.html">About</a>
+        <a href="/AIML/value-proposition.html">Value Proposition</a>
+        <a href="/AIML/artifacts/">Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="wrap">
+    <section>
+      <div><span class="badge">Workshop 2</span><span class="badge">Comparative Analysis</span></div>
+      <h1>Artifact 2 — Machine Learning vs Deep Learning</h1>
+      <p><strong>Introduction:</strong> This artifact compares classic machine learning (ML) and deep learning (DL) with a focus on when each approach is the better choice. It highlights data needs, features, compute, interpretability, and use-case fit—giving a practical decision guide for real projects.</p>
+
+      <h2>Objective</h2>
+      <ul>
+        <li>Explain core differences between ML and DL beyond definitions.</li>
+        <li>Show trade-offs (data, features, compute, interpretability, speed).</li>
+        <li>Provide a simple decision framework for selecting ML vs DL.</li>
+      </ul>
+
+      <h2>Executive Summary</h2>
+      <ul>
+        <li><strong>ML</strong> shines with <em>structured/tabular data</em>, smaller datasets, and clear business rules. It’s faster to train, easier to interpret, and simpler to deploy.</li>
+        <li><strong>DL</strong> excels with <em>unstructured data</em> (images, audio, text), large datasets, and complex patterns. It trades interpretability and compute for higher accuracy on rich data.</li>
+      </ul>
+
+      <h2>Key Differences</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Machine Learning (ML)</th>
+            <th>Deep Learning (DL)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data Type / Size</td>
+            <td>Works well with small–medium datasets; structured/tabular.</td>
+            <td>Benefits from large datasets; great for unstructured data (images, text, audio, video).</td>
+          </tr>
+          <tr>
+            <td>Feature Engineering</td>
+            <td>Manual feature design critical (domain expertise).</td>
+            <td>Learns features automatically from data (representations).</td>
+          </tr>
+          <tr>
+            <td>Compute & Training Time</td>
+            <td>Lower compute, faster iteration; easy experimentation.</td>
+            <td>High compute (GPUs), longer training; more tuning needed.</td>
+          </tr>
+          <tr>
+            <td>Interpretability</td>
+            <td>Often transparent (e.g., linear models, trees, SHAP on GBMs).</td>
+            <td>Less interpretable; requires explainability tooling.</td>
+          </tr>
+          <tr>
+            <td>Operational Complexity</td>
+            <td>Simpler to deploy/monitor; lightweight dependencies.</td>
+            <td>Heavier models; requires MLOps maturity, monitoring for drift.</td>
+          </tr>
+          <tr>
+            <td>Typical Use Cases</td>
+            <td>Risk scoring, churn prediction, pricing, tabular forecasting.</td>
+            <td>Vision (classification, detection), NLP (LLMs), speech, recommendation at scale.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">Note: Hybrids are common—e.g., DL to embed text/images, then ML for tabular decisioning.</p>
+
+      <h2>When to Choose What</h2>
+      <ul>
+        <li><strong>Choose ML</strong> if data is mostly tabular, labeled data is limited, interpretability is required, timelines are short, or you need a strong baseline fast.</li>
+        <li><strong>Choose DL</strong> if data is unstructured or very large, accuracy gains justify extra compute, or the task needs representation learning (vision/NLP/audio).</li>
+        <li><strong>Pragmatic path:</strong> start with ML baseline → measure → move to DL only if business goals require higher accuracy/recall on complex data.</li>
+      </ul>
+
+      <h2>Process</h2>
+      <ol>
+        <li><strong>Research:</strong> Reviewed core differences and real project constraints (data type, size, deadlines, compute).</li>
+        <li><strong>Compare:</strong> Organized a side-by-side table to expose trade-offs cleanly.</li>
+        <li><strong>Decide:</strong> Framed a simple decision rule: baseline with ML, escalate to DL when justified.</li>
+      </ol>
+
+      <h2>Tools & Technologies</h2>
+      <ul>
+        <li>Concepts: Model selection, feature engineering, representation learning.</li>
+        <li>Example stacks (not executed here): scikit-learn (ML), PyTorch/TensorFlow (DL).</li>
+      </ul>
+
+      <h2>Value Proposition</h2>
+      <ul>
+        <li>Shows I can translate AI trade-offs into clear, business-friendly guidance.</li>
+        <li>Demonstrates structured thinking: summarize, compare, and decide.</li>
+        <li>Provides a reusable decision aid for stakeholders evaluating ML vs DL.</li>
+      </ul>
+
+      <h2>Relevance</h2>
+      <p>Directly applicable to roles in data analytics, ML engineering, and product decision-making where teams must balance speed, cost, interpretability, and accuracy.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="margin-top:48px;padding:28px 0;border-top:1px solid #1b2a3a;background:#0c1118;color:#b8c5d6;">
+    <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <div>© <span id="y"></span> Sandeep Sudesh Kumar</div>
+      <div>·</div>
+      <div><a href="mailto:sandeepsudesh06@gmail.com">Email</a></div>
+      <div>·</div>
+      <div><a href="https://www.linkedin.com/in/sandeep-sudesh-kumar" target="_blank">LinkedIn</a></div>
+      <div>·</div>
+      <div><a href="https://github.com/sandeepsudesh06" target="_blank">GitHub</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
