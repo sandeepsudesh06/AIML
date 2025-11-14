@@ -6,7 +6,7 @@
   <title>Artifact 3 — Explaining Neural Networks Simply</title>
   <style>
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f14;color:#e9eef5}
-    a{color:#8cc8ff;text-decoration:none}a:hover{text-decoration:underline}
+    a{color:#8cc8ff;text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
     section{border:1px solid #1b2a3a;background:#0f1520;border-radius:16px;padding:22px;margin:16px 0}
     ul,ol{margin:8px 0 0 18px}
@@ -15,6 +15,7 @@
     .note{color:#b8c5d6;font-size:14px}
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header style="padding:22px 0;border-bottom:1px solid #1b2a3a;background:#0c1118;">
@@ -32,72 +33,52 @@
   <!-- Main -->
   <main class="wrap">
     <section>
-      <div><span class="badge">Workshop 3</span><span class="badge">Communication for Learning</span></div>
+      <div>
+        <span class="badge">Workshop 3</span>
+        <span class="badge">Communication for Learning</span>
+      </div>
+
       <h1>Artifact 3 — Explaining Neural Networks Simply</h1>
-      <p class="note">Course: AIML-500 · Machine Learning Training Methods & Communication</p>
 
-      <p><strong>Introduction:</strong> This artifact explains neural networks in plain, story-driven language for a non-technical audience. It also demonstrates how I applied communication-for-learning strategies—chunking, storytelling, progressive disclosure, and relevance—to support change leadership when introducing AI/ML concepts.</p>
+      <p><strong>Introduction:</strong> This artifact presents my explanation of neural networks written in simple, relatable language so that anyone—even someone with no technical background—can understand it. I used storytelling, analogy, chunking, and progressive disclosure to make the topic clear and approachable.</p>
 
-      <h2>Objective</h2>
+      <h2>Explanation</h2>
+      <p>Albert Einstein said, “If you can’t explain something simply, you don’t understand it well enough.” With that mindset, I explained neural networks using familiar ideas and everyday examples.</p>
+
+      <p>A neural network is like a team of tiny helpers working together to solve a big problem. Each helper (a “neuron”) makes one small decision. One helper alone does not accomplish much, but when thousands are organized into layers, they become powerful pattern finders. This layered structure is similar to how our own brain processes information. The first layer notices simple things like lines or colors, deeper layers combine those into shapes, and final layers recognize complete objects through repeated practice.</p>
+
+      <p>Here is a simple real-world example: training a system to recognize handwritten digits like reading a 5 or 9 from a form.</p>
+
       <ul>
-        <li>Explain what a neural network is using simple, concrete language.</li>
-        <li>Show how communication strategies make complex AI topics approachable.</li>
-        <li>Connect the explanation to change leadership and AI adoption in organizations.</li>
+        <li><strong>Input layer:</strong> The network receives raw pixel values from the image. It does not understand anything yet; it simply takes in information.</li>
+
+        <li><strong>Hidden layers:</strong> Each neuron looks for small features such as curves, corners, or strokes. As data moves through more layers, these tiny features combine into meaningful shapes.</li>
+
+        <li><strong>Learning step:</strong> When the network guesses incorrectly, it compares its guess to the correct answer. It then adjusts the strength of its internal connections (weights), similar to how we adjust the pressure of our hand when correcting a writing mistake. This process repeats thousands of times, gradually improving accuracy.</li>
+
+        <li><strong>Output layer:</strong> The final layer gives a prediction like “This is a 5,” “This email looks like spam,” or “This transaction seems suspicious.”</li>
       </ul>
 
-      <h2>Class Context</h2>
-      <p>This was created for the 3.4 discussion, <em>Communicating for Learning</em>. The task: explain neural networks so clearly that anyone could understand, while intentionally using this week’s strategies.</p>
-
-      <h2>Process</h2>
-      <ol>
-        <li>Reviewed course material on communication for learning and change leadership.</li>
-        <li>Chose familiar analogies (tiny helpers, handwritten digits) to avoid jargon.</li>
-        <li>Structured the explanation as four steps: input layer → hidden layers → learning step → output layer.</li>
-        <li>Iterated wording for brevity, visual thinking, and progressive disclosure.</li>
-        <li>Added a reflection linking this style to real organizational adoption of AI.</li>
-      </ol>
-
-      <h2>Tools & Technologies</h2>
-      <ul>
-        <li>ChatGPT — structure/clarity review aligned to the strategies.</li>
-        <li>Brightspace — posted the final explanation for grading & discussion.</li>
-        <li>GitHub Pages — portfolio publishing.</li>
-      </ul>
-
-      <h2>Plain-Language Explanation</h2>
-      <p>“If you can’t explain something simply, you don’t understand it well enough.” With that mindset, I framed neural networks like a team of tiny helpers. Each helper (a neuron) makes a small decision. One helper can’t do much, but thousands organized in layers become powerful pattern finders—similar to how our brain processes information (lines → shapes → objects).</p>
-
-      <p><strong>Handwritten-digit example:</strong></p>
-      <ul>
-        <li><strong>Input layer:</strong> receives raw pixels—no understanding yet, just information.</li>
-        <li><strong>Hidden layers:</strong> detect tiny features (curves, corners, strokes); deeper layers combine them into meaningful shapes.</li>
-        <li><strong>Learning step:</strong> when the guess is wrong, the network compares to the correct answer and adjusts internal <em>weights</em>—like adjusting pen pressure to fix handwriting. Repeated thousands of times.</li>
-        <li><strong>Output layer:</strong> produces a prediction such as “This is a 5,” “This looks like spam,” or “This transaction seems suspicious.”</li>
-      </ul>
-      <p>This gradual, repeated improvement lets neural networks learn patterns without step-by-step rules.</p>
+      <p>This gradual improvement enables neural networks to learn patterns without requiring step-by-step rules.</p>
 
       <h2>Communication Strategies Used</h2>
       <ul>
-        <li><strong>Chunking</strong> content into simple steps to reduce overload.</li>
-        <li><strong>Storytelling & analogy</strong> (tiny helpers, handwriting) to aid visualization.</li>
-        <li><strong>Progressive disclosure</strong>—start familiar, introduce technical terms later.</li>
-        <li><strong>Relevance</strong>—tie to everyday uses (digit recognition, spam detection, fraud alerts).</li>
-        <li><strong>Visual thinking</strong>—invite a mental image of layers, curves, pixels, patterns.</li>
+        <li><strong>Chunking information</strong> into simple steps to prevent overload.</li>
+        <li><strong>Storytelling & analogy</strong> using “tiny helpers” and handwriting examples.</li>
+        <li><strong>Progressive disclosure</strong> starting with familiar concepts before adding technical ones.</li>
+        <li><strong>Relevance & real-world examples</strong> such as digit recognition, spam detection, and fraud alerts.</li>
+        <li><strong>Visual thinking</strong> painting a mental picture of layers, curves, pixels, and patterns.</li>
       </ul>
 
-      <h2>Value Proposition</h2>
-      <p>I bridge technical AI/ML concepts and non-technical audiences. For employers, this demonstrates clear explanation, change-management awareness, and communication that reduces resistance while increasing engagement—useful in roles that combine data, communication, and leadership.</p>
-
-      <h2>Reflection</h2>
-      <p>I learned that explaining AI is as much about empathy as accuracy. Removing jargon, breaking ideas into steps, and connecting to real-world experiences made the concept approachable. Iterating with chunking, storytelling, and progressive disclosure strengthened my confidence to communicate AI clearly to different audiences—critical for successful AI adoption.</p>
+      <h2>Why This Matters</h2>
+      <p>Clear communication is essential when organizations adopt AI or ML. Employees may feel intimidated or overwhelmed, but relatable explanations build trust and reduce resistance. Turning complex ideas into simple, understandable language helps teams adapt to digital transformation with confidence and curiosity.</p>
 
       <h2>References</h2>
       <ul>
-        <li>IBM. (n.d.). <em>What are neural networks?</em> <a target="_blank" rel="noopener" href="https://www.ibm.com/topics/neural-networks">https://www.ibm.com/topics/neural-networks</a></li>
-        <li>Nielsen, M. (2015). <em>Neural Networks and Deep Learning.</em> <a target="_blank" rel="noopener" href="http://neuralnetworksanddeeplearning.com">http://neuralnetworksanddeeplearning.com</a></li>
+        <li>IBM. (n.d.). <em>What are neural networks?</em> https://www.ibm.com/topics/neural-networks</li>
+        <li>Nielsen, M. (2015). <em>Neural networks and deep learning.</em> http://neuralnetworksanddeeplearning.com</li>
       </ul>
 
-      <p class="note"><strong>AI Tool Disclosure:</strong> I used ChatGPT to refine structure and clarity and to align with the communication-for-learning strategies. Ideas, explanations, and final direction are my own.</p>
     </section>
   </main>
 
@@ -113,6 +94,10 @@
       <div><a href="https://github.com/sandeepsudesh06" target="_blank">GitHub</a></div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
