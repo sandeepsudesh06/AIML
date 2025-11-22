@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Artifact 4 — Data Challenges in Machine Learning</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b0f14;color:#e9eef5}
+    a{color:#8cc8ff;text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+    section{border:1px solid #1b2a3a;background:#0f1520;border-radius:16px;padding:22px;margin:16px 0}
+    ul,ol{margin:8px 0 0 18px}
+    .badge{display:inline-block;padding:4px 8px;border:1px solid #2a4058;border-radius:999px;font-size:12px;margin-right:6px}
+    h1{margin:0 0 8px;font-size:clamp(26px,4vw,34px)}
+    .note{color:#b8c5d6;font-size:14px}
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header style="padding:22px 0;border-bottom:1px solid #1b2a3a;background:#0c1118;">
+    <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="/AIML/" style="font-weight:700;color:#e9eef5;text-decoration:none;font-size:18px;">Sandeep · AI/ML Portfolio</a>
+      <nav style="margin-left:auto;display:flex;gap:14px;">
+        <a href="/AIML/">Home</a>
+        <a href="/AIML/about.html">About</a>
+        <a href="/AIML/value-proposition.html">Value Proposition</a>
+        <a href="/AIML/artifacts/">Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="wrap">
+    <section>
+      <div>
+        <span class="badge">Workshop 4</span>
+        <span class="badge">Data Challenges</span>
+      </div>
+
+      <h1>Artifact 4 — Data Challenges in Machine Learning</h1>
+
+      <p class="note">
+        This artifact summarizes my responses to a three-part coaching session on core data challenges:
+        <strong>missing data</strong>, <strong>noisy data</strong>, and <strong>data drift</strong>.  
+        I explained how I would detect each issue, choose a strategy, and balance trade-offs using real examples from my own work.
+      </p>
+
+      <h2>Objective</h2>
+      <ul>
+        <li>Show my ability to diagnose and handle common ML data problems.</li>
+        <li>Demonstrate structured reasoning instead of just listing techniques.</li>
+        <li>Connect decisions to business context and real examples (crypto datasets).</li>
+        <li>Highlight how I think about trade-offs like bias, stability, and adaptability.</li>
+      </ul>
+
+      <h2>Scenario 1 — Handling Missing Data</h2>
+      <p><strong>Challenge:</strong> Key features in a dataset contain missing values that could distort the model.</p>
+
+      <p><strong>My approach:</strong></p>
+      <ul>
+        <li>Start with EDA and profiling to see <em>where</em> values are missing and <em>why</em> (random gaps, system errors, human input issues, etc.).</li>
+        <li>Choose imputation by feature type:
+          <ul>
+            <li>Numerical → mean, median, or model-based imputation for important fields.</li>
+            <li>Categorical → mode or an explicit “Unknown” category.</li>
+          </ul>
+        </li>
+        <li>Remove rows only if too many critical fields are missing and would mislead the model.</li>
+        <li>Double-check meaning: sometimes a zero or blank actually has business meaning and should not be treated as an error.</li>
+      </ul>
+
+      <p><strong>Example:</strong> In a cryptocurrency OHLCV dataset, I saw missing volume values on certain days.  
+      Instead of deleting them immediately, I compared them with market activity and realized the exchange had downtime.  
+      That context guided how I filled or handled those records.</p>
+
+      <p><strong>Key insight:</strong> how we treat missing data can introduce bias or hide important patterns, so understanding the cause comes before choosing the method.</p>
+
+      <h2>Scenario 2 — Cleaning Noisy Data</h2>
+      <p><strong>Challenge:</strong> Random spikes, extreme values, or measurement errors that hide the true signal.</p>
+
+      <p><strong>My approach:</strong></p>
+      <ul>
+        <li>Use EDA visuals (histograms, boxplots, line charts) to spot unusual spikes or strange shapes in distributions.</li>
+        <li>Apply statistical methods such as Z-score or IQR to flag potential outliers.</li>
+        <li>Decide based on context:
+          <ul>
+            <li>If noise comes from bad measurements or system glitches → smooth using rolling averages or similar techniques.</li>
+            <li>If “outliers” reflect real rare events → keep them; they may be exactly what the business cares about.</li>
+          </ul>
+        </li>
+        <li>Cap or adjust extreme values when they clearly don’t represent realistic behavior.</li>
+      </ul>
+
+      <p><strong>Example:</strong> While analyzing crypto price data, a single exchange sometimes reported a faulty price spike.  
+      Using a 7-day rolling average helped smooth those one-off errors while keeping the real trend.</p>
+
+      <p><strong>Trade-off reflection:</strong>  
+      Smoothing keeps trends stable but can blur sharp changes.  
+      Removing outliers reduces extreme errors but risks losing meaningful rare events.  
+      The best choice depends on the story the data is telling and the question the model needs to answer.</p>
+
+      <h2>Scenario 3 — Detecting and Responding to Data Drift</h2>
+      <p><strong>Challenge:</strong> A model performs well at first, but accuracy drops as the real-world data distribution changes.</p>
+
+      <p><strong>My approach:</strong></p>
+      <ul>
+        <li>Monitor incoming data distributions versus the original training data.</li>
+        <li>Track model metrics (accuracy, F1, etc.) over time to catch early performance drops.</li>
+        <li>Use statistical checks (like PSI, KS tests, or simple comparison of means and ranges) to confirm whether drift is happening.</li>
+        <li>Retrain the model when needed:
+          <ul>
+            <li>For fast-moving domains → use a rolling or sliding window of recent data.</li>
+            <li>For slower domains → mix recent data with selected historical data.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><strong>Example:</strong> In crypto markets, volatility patterns in 2020 and 2024 were very different.  
+      A model trained only on 2020 behavior struggled later, so I would retrain using more recent data, with a small amount of history to avoid overreacting to short-term noise.</p>
+
+      <p><strong>My reasoning:</strong> Data drift is normal in production systems.  
+      Models are living systems that need checks, monitoring, and retraining, not one-time deployment.</p>
+
+      <h2>Summary Takeaways</h2>
+      <ul>
+        <li><strong>Missing data:</strong> understand patterns first, then choose imputation or removal to avoid bias.</li>
+        <li><strong>Noisy data:</strong> detect with visuals and stats; smooth or cap carefully while preserving real signals.</li>
+        <li><strong>Data drift:</strong> monitor both data and model performance, detect changes early, and retrain with fresh data.</li>
+      </ul>
+
+      <h2>Why This Matters</h2>
+      <p>
+        These three challenges show up in almost every real ML project.  
+        This artifact demonstrates how I think through them step-by-step, using both statistics and domain context.  
+        For roles in data analytics, ML engineering, or risk and forecasting, this mindset is essential for keeping models fair, stable, and reliable over time.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="margin-top:48px;padding:28px 0;border-top:1px solid #1b2a3a;background:#0c1118;color:#b8c5d6;">
+    <div style="max-width:960px;margin:0 auto;padding:0 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <div>© <span id="y"></span> Sandeep Sudesh Kumar</div>
+      <div>·</div>
+      <div><a href="mailto:sandeepsudesh06@gmail.com">Email</a></div>
+      <div>·</div>
+      <div><a href="https://www.linkedin.com/in/sandeep-sudesh-kumar" target="_blank">LinkedIn</a></div>
+      <div>·</div>
+      <div><a href="https://github.com/sandeepsudesh06" target="_blank">GitHub</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
