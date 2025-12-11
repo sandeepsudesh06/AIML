@@ -2,230 +2,372 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Artifact 5 — AI Leadership, Ethics & Responsible Integration Framework</title>
+  <title>Artifact 5 - Ethical Analysis of Amazon Hiring AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #05070d;
-      --bg-card: #101623;
+      --bg: #020617;
+      --bg-card: #0b1220;
+      --bg-section: #111827;
       --accent: #3b82f6;
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
       --radius-xl: 18px;
       --radius-lg: 14px;
-      --border-subtle: #1f2933;
-      --shadow-soft: 0 18px 40px rgba(0,0,0,0.55);
-      --font-main: system-ui, sans-serif;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    body {
-      font-family: var(--font-main);
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
-      color: var(--text-main);
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    a { color: var(--accent); }
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     .page {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 32px 16px 60px;
+      padding: 28px 16px 60px;
     }
+
+    /* nav */
 
     .nav {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 22px;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
     }
 
-    .nav a { color: var(--text-muted); text-decoration: none; }
-    .nav a:hover { color: var(--text-main); }
+    .nav-title {
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* main card */
 
     .card {
       background: linear-gradient(135deg, #111827, #020617);
-      border: 1px solid rgba(148,163,184,0.28);
       border-radius: var(--radius-xl);
-      padding: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
       box-shadow: var(--shadow-soft);
+      padding: 26px 24px 28px;
     }
 
-    h1 { font-size: 2rem; margin-bottom: 6px; }
-    h2 { margin-top: 22px; margin-bottom: 8px; }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 0.78rem;
+    }
 
-    .subtitle {
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
       color: var(--text-muted);
-      max-width: 720px;
-      margin-bottom: 26px;
     }
 
-    .section {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      padding: 20px 18px;
-      margin-top: 22px;
+    .pill.primary {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(37, 99, 235, 0.08);
     }
 
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
+    h1 {
+      font-size: 1.9rem;
       margin-bottom: 8px;
     }
 
-    .section p, .section li {
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 720px;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: var(--bg-section);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 16px 16px;
+      margin-top: 18px;
+    }
+
+    .section-title {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .section-tagline {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .section ul {
+      margin-left: 18px;
+      margin-bottom: 8px;
       color: var(--text-muted);
       font-size: 0.95rem;
     }
 
-    ul { margin-left: 20px; }
-    li { margin-bottom: 6px; }
+    .section ul li + li {
+      margin-top: 4px;
+    }
 
     .footer {
+      margin-top: 34px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
       text-align: center;
-      margin-top: 40px;
-      color: #6b7280;
-      font-size: 0.8rem;
+    }
+
+    @media (max-width: 720px) {
+      .card {
+        padding: 20px 14px 22px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
 
-    <!-- NAV -->
+    <!-- nav -->
     <header class="nav">
-      <div>Sandeep · AI/ML Portfolio</div>
-      <nav>
-        <a href="index.html">Home</a>&nbsp;&nbsp;
-        <a href="about.html">About</a>&nbsp;&nbsp;
-        <a href="value-proposition.html">Value Proposition</a>&nbsp;&nbsp;
+      <div class="nav-title">Sandeep · AI/ML Portfolio</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="value-proposition.html">Value Proposition</a>
         <a href="artifacts.html">Artifacts</a>
       </nav>
     </header>
 
-    <!-- MAIN CARD -->
+    <!-- main artifact card -->
     <main class="card">
 
-      <h1>Artifact 5 — AI Leadership, Ethics & Responsible Integration Framework</h1>
+      <div class="pill-row">
+        <span class="pill primary">Workshop 6</span>
+        <span class="pill">Ethics</span>
+        <span class="pill">Responsible AI</span>
+        <span class="pill">Hiring</span>
+      </div>
+
+      <h1>Artifact 5 - Ethical Analysis of Amazon Hiring AI</h1>
+
       <p class="subtitle">
-        This final artifact brings together three major pieces of work from Workshop 6:
-        an ethical AI incident analysis, a commercial AI newsletter, and my leadership
-        framework. Together, they represent how I think about AI as both a technical and
-        leadership responsibility.
+        This artifact presents my analysis of Amazon’s experimental AI hiring tool that reportedly learned to favor male candidates.
+        I use this case to explore how biased data, lack of transparency, and weak safeguards can harm real people when AI is used in hiring.
       </p>
 
-      <!-- SECTION 1 -->
+      <!-- Overview -->
       <section class="section">
-        <div class="section-title">Section 1 — Ethical Evaluation: Amazon Hiring AI Incident</div>
-
+        <div class="section-title">Overview</div>
         <p>
-          I evaluated Incident 37 from the AI Incident Database, where Amazon’s experimental
-          hiring model showed gender bias by ranking male candidates higher than female
-          candidates. The issue emerged because the AI learned patterns from historical
-          resumes that reflected previous male-dominant hiring trends.
+          Between 2014 and 2017, Amazon developed an internal AI system to score resumes for technical roles.
+          The model was trained on about ten years of historical resumes, most of which came from male applicants.
+          Over time, the system began to treat signals linked to women as negative, such as the word "women's"
+          or degrees from some all women’s colleges. Engineers tried to correct these issues, but they could not
+          guarantee that new forms of bias would not appear, and the project was eventually shut down.
         </p>
-
-        <ul>
-          <li><strong>Biased training data:</strong> Historical patterns were encoded into the model.</li>
-          <li><strong>Lack of transparency:</strong> Applicants did not know an AI system was influencing decisions.</li>
-          <li><strong>Real-world harm:</strong> Biased rankings can impact careers and long-term opportunities.</li>
-        </ul>
-
-        <p>My recommendations included dataset audits, bias testing, transparent disclosures, and strict human oversight.</p>
-      </section>
-
-      <!-- SECTION 2 -->
-      <section class="section">
-        <div class="section-title">Section 2 — Commercial AI Across Productivity, Healthcare, and Retail</div>
-
         <p>
-          This newsletter examined how AI is being used commercially right now and how it is reshaping
-          business operations across three industries.
-        </p>
-
-        <h3>1. Productivity — Microsoft Copilot</h3>
-        <p>
-          Copilot is now widely used for summarization, document drafting, spreadsheet analysis, and workflow automation.
-          It is becoming a digital coworker that boosts productivity and reduces repetitive tasks.
-        </p>
-
-        <h3>2. Healthcare — DeepMind MedLM</h3>
-        <p>
-          MedLM supports clinicians by generating summaries of medical histories, explaining imaging data, and helping with
-          diagnostic reasoning. It enhances clinical decision-making rather than replacing physicians.
-        </p>
-
-        <h3>3. Retail — Amazon Forecasting Models</h3>
-        <p>
-          Updated demand forecasting and personalization engines allow retailers to reduce waste, optimize inventory, and
-          predict customer needs more accurately.
-        </p>
-
-        <p>Across all three domains, AI is shifting from a tool to a fully integrated decision partner.</p>
-      </section>
-
-      <!-- SECTION 3 -->
-      <section class="section">
-        <div class="section-title">Section 3 — Personal Framework: Seeing Myself as a Change Leader</div>
-
-        <h3>Mission Statement</h3>
-        <p>
-          To lead responsibly in AI by using data and technology to improve decisions, support people, and build systems that
-          are ethical, transparent, and useful.
-        </p>
-
-        <h3>Core Values</h3>
-        <ul>
-          <li>Communication</li>
-          <li>Adaptability</li>
-          <li>Learning Mindset</li>
-          <li>Stakeholder Engagement</li>
-          <li>Ethical Responsibility</li>
-          <li>Resilience</li>
-        </ul>
-
-        <h3>Key Objectives</h3>
-        <ul>
-          <li>Secure an AI/ML-related role in 2026.</li>
-          <li>Strengthen leadership confidence and ethical decision-making.</li>
-          <li>Use AI responsibly in daily work to meet deadlines and manage data effectively.</li>
-          <li>Stay updated with AI trends and help others adopt them responsibly.</li>
-          <li>Long-term: contribute to meaningful global AI innovations.</li>
-        </ul>
-
-        <h3>Action Plan</h3>
-        <ul>
-          <li>Continue hands-on learning and certifications.</li>
-          <li>Apply responsible AI principles in all projects.</li>
-          <li>Seek mentorship and engage in community learning.</li>
-          <li>Practice communication and leadership through discussions and team settings.</li>
-        </ul>
-
-        <h3>Evaluation & Adaptation</h3>
-        <p>
-          I will review my progress every six months, update goals, reflect on challenges, and use peer or mentor feedback to
-          adjust my leadership approach. This framework will evolve as I gain new skills and experiences.
+          This artifact explains what went wrong, why it matters for AI leadership, and how I would design a safer
+          approach if I were responsible for a similar system.
         </p>
       </section>
 
-      <!-- SUMMARY -->
+      <!-- Issue 1 -->
       <section class="section">
-        <div class="section-title">Key Takeaway</div>
+        <div class="section-title">Ethical Issue 1 - Biased Training Data and Reinforced Inequality</div>
+        <div class="section-tagline">The model copied old patterns instead of challenging them.</div>
+
         <p>
-          Artifact 5 shows how I developed not just technical skills but leadership qualities—connecting ethics,
-          communication, and responsible AI. It represents how I want to grow in my career and contribute to meaningful AI
-          development.
+          The system learned from past hiring outcomes where men were over represented. Instead of flagging this imbalance
+          as a risk, the model treated it as a pattern to repeat. As a result, it rewarded resumes that looked like previous
+          male candidates and quietly penalized signals that suggested a woman might have written the resume.
         </p>
+
+        <p>
+          This shows that AI does not fix human bias on its own. If the underlying data is skewed, the model will turn that
+          bias into automated decisions at scale. In hiring, this can block qualified people from even receiving an interview
+          and can make existing inequality look objective because the decision came from an algorithm.
+        </p>
+
+        <p>
+          If I were responsible for such a system, I would start with a detailed audit of the training data:
+        </p>
+        <ul>
+          <li>Check representation across gender, race, and other protected groups.</li>
+          <li>Measure how often each group appears in positive outcomes such as hires or strong ratings.</li>
+          <li>Run fairness tests on the model and compare scoring patterns across groups.</li>
+        </ul>
+        <p>
+          Any model that shows systematic disadvantage would be rejected or redesigned. I would also build a review process
+          where data scientists, HR leaders, and ethics reviewers jointly approve models before they influence hiring.
+        </p>
+      </section>
+
+      <!-- Issue 2 -->
+      <section class="section">
+        <div class="section-title">Ethical Issue 2 - Lack of Transparency and Voice for Candidates</div>
+        <div class="section-tagline">People were scored by a system they could not see or question.</div>
+
+        <p>
+          Applicants had no clear way of knowing that an AI system might be ranking their resume differently based on hidden
+          patterns in the data. If the tool had gone live without proper controls, a candidate could have been filtered out
+          by an algorithm without ever learning why or having a chance to challenge the result.
+        </p>
+
+        <p>
+          When decisions about jobs are made by systems that people cannot see or question, trust falls quickly.
+          Lack of transparency also removes pressure on companies to fix unfair systems, because the people who are harmed
+          never see the true cause. Over time this can damage both the employer’s reputation and public confidence in AI.
+        </p>
+
+        <p>
+          For high stakes use cases like hiring, I would require:
+        </p>
+        <ul>
+          <li>Clear communication that AI is part of the evaluation process and what it is used for.</li>
+          <li>A way for applicants to request a human review if they believe a decision is unfair.</li>
+          <li>Training for recruiters and hiring managers so they understand the model’s limits and do not treat scores as final truth.</li>
+        </ul>
+      </section>
+
+      <!-- Issue 3 -->
+      <section class="section">
+        <div class="section-title">Ethical Issue 3 - Experimenting on Real Careers Without Strong Safeguards</div>
+        <div class="section-tagline">Technical experiments had real impact on people’s opportunities.</div>
+
+        <p>
+          Even though Amazon states that the tool was experimental, it was being tested on real resumes and real applicants.
+          That means the system influenced how people were viewed by recruiters, even while it still had serious fairness problems.
+        </p>
+
+        <p>
+          There is an important difference between experimenting on synthetic data in a lab and experimenting on people’s life
+          opportunities. When AI is used in hiring, housing, or healthcare, mistakes can change the direction of someone’s future.
+          Treating these projects as simple prototypes ignores the human cost of failure.
+        </p>
+
+        <p>
+          Any AI pilot in hiring should be treated like research that involves human subjects:
+        </p>
+        <ul>
+          <li>Use AI only as a second opinion while humans keep full decision authority.</li>
+          <li>Monitor outcomes during the pilot and stop the system if unfair patterns appear.</li>
+          <li>Run an ethics or risk review before expanding any pilot beyond a limited test group.</li>
+        </ul>
+      </section>
+
+      <!-- Reflection -->
+      <section class="section">
+        <div class="section-title">How This Incident Shaped My Thinking</div>
+
+        <p>
+          Before working on this case, I mostly viewed biased AI as a technical bug that could be fixed with better models or more data.
+          After studying this incident, I now see it as a leadership and process problem as much as a technical one.
+        </p>
+
+        <p>
+          This case reminded me that historical data always carries values and power dynamics from the past, fairness requires
+          intentional design, and people who are affected by AI systems should have visibility and a voice. Going forward, whenever
+          I work on AI solutions, I want to ask three questions early:
+        </p>
+        <ul>
+          <li>Who could be harmed if this system is wrong.</li>
+          <li>Who is missing from the data.</li>
+          <li>Who has the power to question or override the system.</li>
+        </ul>
+        <p>
+          These questions help me think like a change leader, not just a model builder.
+        </p>
+      </section>
+
+      <!-- Skills -->
+      <section class="section">
+        <div class="section-title">Skills Demonstrated</div>
+        <p>
+          This artifact demonstrates:
+        </p>
+        <ul>
+          <li>Critical thinking about real world AI incidents.</li>
+          <li>Ability to connect technical decisions to human impact.</li>
+          <li>Awareness of fairness, transparency, and accountability in AI systems.</li>
+          <li>Clear written communication for both technical and non technical readers.</li>
+          <li>A leadership mindset that looks beyond accuracy to long term consequences.</li>
+        </ul>
+      </section>
+
+      <!-- References -->
+      <section class="section">
+        <div class="section-title">References</div>
+        <p class="section-tagline">Selected sources that informed this analysis.</p>
+        <ul>
+          <li>
+            Reuters. (2018). Amazon scraps secret AI recruiting tool that showed bias against women.
+          </li>
+          <li>
+            BBC News. (2018). Amazon scraps sexist AI recruitment tool.
+          </li>
+          <li>
+            The Guardian. (2018). Amazon ditched AI recruiting tool that favoured men for technical jobs.
+          </li>
+          <li>
+            AI Incident Database. Incident 37 - Amazon’s experimental hiring tool allegedly displayed gender bias in candidate rankings.
+          </li>
+        </ul>
       </section>
 
     </main>
 
     <footer class="footer">
-      © 2025 Sandeep Sudesh Kumar — AI/ML Portfolio
+      © 2025 Sandeep Sudesh Kumar · AI/ML Portfolio
     </footer>
-
   </div>
 </body>
 </html>
