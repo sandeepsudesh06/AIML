@@ -3,91 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artifact 7: Visualizing Neural Networks</title>
+  <title>Artifact 7 - Visualizing Neural Networks</title>
 
   <style>
+    :root {
+      --bg: #0b1117;
+      --panel: #111824;
+      --panel-2: #0f1724;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: #26364d;
+      --accent: #7dd3fc;
+      --accent-2: #22d3ee;
+      --link: #8ecbff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f7fb;
-      color: #1f2937;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
     header {
-      background: linear-gradient(135deg, #102a56, #173f7a);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background: #0c1118;
+      padding: 18px 0;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    header p {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #dbeafe;
+    .brand {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+
+    .links a {
+      color: var(--link);
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
     }
 
     main {
       max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 50px auto;
+      padding: 0 24px;
     }
 
     .card {
-      background: white;
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
-    .artifact-image {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid #d9e2ec;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #38506f;
+      color: #dbeafe;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      background: #0d1726;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      line-height: 1.25;
+      margin: 0 0 18px;
+      color: var(--text);
     }
 
     h2 {
-      color: #102a56;
-      margin-top: 0;
+      font-size: 1.55rem;
+      margin-top: 34px;
+      margin-bottom: 14px;
+      color: var(--text);
     }
 
-    .meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      color: #e0f2fe;
     }
 
-    .meta div {
-      background: #eef6ff;
-      padding: 12px;
+    p {
+      margin: 0 0 16px;
+      color: var(--text);
+    }
+
+    ul, ol {
+      color: var(--text);
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .artifact-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #31435e;
+      display: block;
+      margin: 24px 0;
+      background: #020617;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 18px 0 28px;
+      border: 1px solid var(--line);
       border-radius: 10px;
-      border-left: 4px solid #1d4ed8;
     }
 
-    footer {
-      text-align: center;
-      padding: 24px;
-      background: #102a56;
-      color: #dbeafe;
-      font-size: 0.9rem;
-      margin-top: 40px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: var(--panel-2);
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      color: var(--text);
+    }
+
+    th {
+      background: #142033;
+      color: #e0f2fe;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .note {
+      border-left: 4px solid var(--accent-2);
+      padding: 14px 16px;
+      background: #0e1b2d;
+      border-radius: 8px;
+      margin: 18px 0;
+      color: var(--text);
     }
 
     a {
-      color: #1d4ed8;
-      text-decoration: none;
-      font-weight: bold;
+      color: var(--link);
     }
 
-    a:hover {
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 24px;
+      color: #cbd5e1;
+      background: #0c1118;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-inner a {
+      color: var(--link);
+      margin-left: 14px;
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
       text-decoration: underline;
     }
   </style>
@@ -95,74 +211,213 @@
 
 <body>
   <header>
-    <h1>Artifact 7: Visualizing Neural Networks</h1>
-    <p>How AI Learns Patterns Through Layers, Neurons, Weights, and Optimization</p>
+    <div class="nav">
+      <a class="brand" href="/AIML/">Sandeep · AI/ML Portfolio</a>
+      <nav class="links">
+        <a href="/AIML/">Home</a>
+        <a href="/AIML/about.html">About</a>
+        <a href="/AIML/value-proposition.html">Value Proposition</a>
+        <a href="/AIML/artifacts.html">Artifacts</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="card">
-      <h2>Project Overview</h2>
+      <div class="tag-row">
+        <span class="tag">AIML-501</span>
+        <span class="tag">Workshop 2</span>
+        <span class="tag">Portfolio Artifact</span>
+      </div>
+
+      <h1>Artifact 7 - Visualizing Neural Networks</h1>
+
       <p>
-        This portfolio artifact visually explains the structure and learning process of neural networks.
-        It highlights the major components of a neural network, including layers, neurons, weights,
-        activation functions, loss functions, and optimization algorithms. The artifact also includes
-        a training cycle diagram, a real-world spam detection example, and a TensorFlow Neural Network
-        Playground experiment section.
+        <strong>Introduction:</strong> This artifact presents a visual explanation of neural networks and how they learn from data.
+        It focuses on the structure of a neural network, the role of its core components, and the training process that helps a model improve its predictions.
+        Neural networks are widely used in modern artificial intelligence for image recognition, natural language processing, recommendation systems,
+        fraud detection, predictive analytics, and classification tasks.
       </p>
 
-      <div class="meta">
-        <div><strong>Course:</strong><br />Model Development</div>
-        <div><strong>Assignment:</strong><br />2.4 Portfolio Artifact</div>
-        <div><strong>Topic:</strong><br />Visualizing Neural Networks</div>
-        <div><strong>Artifact Type:</strong><br />Visual Presentation</div>
-      </div>
-    </section>
+      <h2>Objective</h2>
+      <ul>
+        <li>Define and describe the key components of a neural network.</li>
+        <li>Illustrate how data flows from the input layer through hidden layers to the output layer.</li>
+        <li>Explain how neurons, weights, activation functions, loss functions, and optimization algorithms work together during learning.</li>
+        <li>Connect neural network structure to a real-world example such as email spam detection.</li>
+        <li>Create a professional visual artifact that communicates complex AI concepts clearly for technical and non-technical audiences.</li>
+      </ul>
 
-    <section class="card">
-      <h2>Visual Portfolio Artifact</h2>
+      <h2>Artifact Visual Framework</h2>
+      <p>
+        The infographic below explains neural networks using a structured visual framework. It includes a neural network architecture diagram,
+        component explanation cards, a training cycle flowchart, a real-world spam detection example, and a TensorFlow Neural Network Playground
+        experiment section. The purpose of the visual is to simplify how neural networks process data, identify patterns, calculate errors,
+        and improve over repeated training cycles.
+      </p>
+
       <img
         src="neural_network_portfolio.png"
-        alt="Visual infographic explaining neural network architecture, components, training cycle, and real-world example"
-        class="artifact-image"
+        alt="Visual infographic explaining neural network architecture, components, training cycle, and real-world application"
+        class="artifact-img"
       />
-    </section>
 
-    <section class="card">
-      <h2>Reflection</h2>
+      <h2>Description</h2>
       <p>
-        For this portfolio artifact, I created a visual explanation of neural network structure and learning.
-        This helped me understand how input layers, hidden layers, output layers, neurons, weights,
-        activation functions, loss functions, and optimization algorithms work together. The process also
-        helped me practice communicating complex AI concepts in a clear and professional way for both
-        technical and non-technical audiences. Seeing the network architecture visually, with connections,
-        weights, and data flow, made abstract mathematical concepts much more concrete and memorable.
+        A neural network is a machine learning model made up of connected layers of artificial neurons. Data enters through the input layer,
+        moves through one or more hidden layers, and produces a result through the output layer. Each layer transforms the information it receives,
+        allowing the model to identify patterns and relationships that may not be obvious from the raw input data.
       </p>
-    </section>
 
-    <section class="card">
-      <h2>Key Takeaways</h2>
       <p>
-        Neural networks learn by passing data through connected layers, where each layer transforms the
-        representation for the next stage. Weights, activation functions, loss functions, and optimization
-        algorithms work together during training to minimize error and improve predictions. Visualizing
-        neural networks makes complex AI concepts easier to understand, explain, and apply in real-world
-        machine learning problems.
+        This artifact explains neural networks as a complete learning system rather than as separate technical terms. The input layer receives data,
+        hidden layers process and transform that data, and the output layer produces a prediction or classification. During training, the model compares
+        its prediction to the correct answer, calculates error using a loss function, and updates its weights through an optimization algorithm.
       </p>
-    </section>
 
-    <section class="card">
-      <h2>AI Usage Statement</h2>
+      <div class="note">
+        Neural networks do not simply follow fixed rules. They learn by adjusting internal values over time so that future predictions become more accurate.
+      </div>
+
+      <h2>Neural Network Components Explained</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Role in a Neural Network</th>
+              <th>Why It Matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Layers</strong></td>
+              <td>Layers organize neurons into stages of processing. The input layer receives data, hidden layers transform data, and the output layer produces the result.</td>
+              <td>Layers help the model move from raw data to more meaningful representations.</td>
+            </tr>
+            <tr>
+              <td><strong>Neurons</strong></td>
+              <td>Neurons are small processing units that receive inputs, perform calculations, and pass results forward.</td>
+              <td>They are the basic building blocks that allow the network to process information.</td>
+            </tr>
+            <tr>
+              <td><strong>Weights</strong></td>
+              <td>Weights control how strongly one neuron influences another neuron.</td>
+              <td>Weights allow the model to learn which inputs are more important for making predictions.</td>
+            </tr>
+            <tr>
+              <td><strong>Activation Functions</strong></td>
+              <td>Activation functions decide whether a neuron should pass information forward and introduce non-linear behavior.</td>
+              <td>They help neural networks learn complex patterns that simple linear models cannot capture.</td>
+            </tr>
+            <tr>
+              <td><strong>Loss Functions</strong></td>
+              <td>Loss functions measure the difference between the model's prediction and the correct answer.</td>
+              <td>They provide feedback that shows how much the model needs to improve.</td>
+            </tr>
+            <tr>
+              <td><strong>Optimization Algorithms</strong></td>
+              <td>Optimization algorithms update weights step by step to reduce loss.</td>
+              <td>They help the model improve over time by learning from mistakes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>How the Learning Process Works</h2>
       <p>
-        Generative AI tools were used to support brainstorming, outlining, visual organization, and improving
-        the structure of this portfolio artifact. The final content, design decisions, and reflection were
-        reviewed, edited, and completed in my own words based on my understanding of neural networks and
-        the TensorFlow Neural Network Playground exploration.
+        The learning process begins when the network receives input data. The data is passed through connected neurons, where weights determine how much
+        influence each input has. Activation functions help decide which signals should continue forward. The output layer then produces a prediction,
+        such as a class label, score, or recommendation.
       </p>
+
+      <p>
+        After the prediction is made, the loss function compares the prediction with the correct answer. If the prediction is inaccurate, the optimizer
+        adjusts the weights to reduce future error. This process repeats many times during training. Over time, the neural network becomes better at
+        recognizing patterns and producing accurate outputs.
+      </p>
+
+      <h2>Real-World Application: Email Spam Detection</h2>
+      <p>
+        The artifact uses email spam detection as a practical example of how neural networks work. In this example, the input layer receives features such as
+        sender information, keywords, links, attachments, and message patterns. Hidden layers analyze these features and identify suspicious combinations,
+        such as repeated promotional language, unusual links, or sender behavior that resembles known spam messages.
+      </p>
+
+      <p>
+        The output layer produces a classification such as <strong>spam</strong> or <strong>safe</strong>. This example shows how neural networks can support
+        decision-making by learning from previous examples and applying that learning to new data.
+      </p>
+
+      <h2>TensorFlow Neural Network Playground Exploration</h2>
+      <p>
+        As part of the artifact development process, I explored the TensorFlow Neural Network Playground to observe how model design choices affect learning.
+        The playground helped demonstrate how changes in dataset type, noise level, activation function, number of layers, and number of neurons can influence
+        training time and prediction quality.
+      </p>
+
+      <p>
+        The exploration showed that adding more neurons or layers can help a model learn more complex decision boundaries, but it can also increase complexity.
+        A simple model may train quickly but fail to capture difficult patterns. A more complex model may perform better, but it requires careful adjustment to avoid
+        unnecessary complexity. This helped reinforce the importance of balancing model simplicity, performance, and interpretability.
+      </p>
+
+      <h2>Process</h2>
+      <ol>
+        <li><strong>Research:</strong> Reviewed neural network basics, including layers, neurons, weights, activation functions, loss functions, and optimization algorithms.</li>
+        <li><strong>Exploration:</strong> Practiced with the TensorFlow Neural Network Playground to observe how model settings affect training behavior.</li>
+        <li><strong>Design:</strong> Created a visual framework that organizes neural network structure, learning flow, and real-world application in one artifact.</li>
+        <li><strong>Simplification:</strong> Translated technical concepts into concise explanations suitable for students, instructors, and future employers.</li>
+        <li><strong>Review:</strong> Checked the artifact for clarity, readability, visual balance, and alignment with the assignment requirements.</li>
+      </ol>
+
+      <h2>Tools and Technologies Used</h2>
+      <ul>
+        <li>GitHub Pages for portfolio publishing and documentation.</li>
+        <li>HTML and CSS for webpage structure and formatting.</li>
+        <li>TensorFlow Neural Network Playground for interactive model exploration.</li>
+        <li>Canva, PowerPoint, or AI-assisted design tools for infographic creation and visual organization.</li>
+        <li>Generative AI tools for brainstorming, outlining, and improving structure.</li>
+      </ul>
+
+      <h2>Value Proposition</h2>
+      <p>
+        This artifact demonstrates my ability to simplify a complex artificial intelligence concept into a professional visual explanation.
+        It shows that I can explain neural network architecture, connect technical components to the learning process, and communicate AI concepts
+        in a way that supports understanding for both technical and non-technical audiences.
+      </p>
+
+      <h2>Unique Value</h2>
+      <p>
+        My unique value is connecting AI and machine learning concepts with clear communication, visual design, and practical business understanding.
+        This artifact reflects my ability to translate abstract model concepts into a structured visual reference that can help learners, stakeholders,
+        and project teams understand how neural networks support intelligent decision-making.
+      </p>
+
+      <h2>Relevance</h2>
+      <p>
+        This artifact is relevant for roles in data analytics, machine learning, artificial intelligence, business intelligence, and AI solution development.
+        In real-world projects, explaining how a model works is often just as important as building the model itself. This artifact supports that need by making
+        neural network structure and learning behavior easier to understand and discuss.
+      </p>
+
+      <h2>References</h2>
+      <ul>
+        <li>TensorFlow. (n.d.). <em>Neural Network Playground</em>. https://playground.tensorflow.org/</li>
+        <li>Google. (n.d.). <em>Machine Learning Crash Course: Neural networks</em>. https://developers.google.com/machine-learning/crash-course</li>
+        <li>IBM. (n.d.). <em>What are neural networks?</em> https://www.ibm.com/topics/neural-networks</li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    Artifact 7: Visualizing Neural Networks | Sandeep Sudesh Kumar
+    <div class="footer-inner">
+      © 2026 Sandeep Sudesh Kumar
+      <a href="mailto:">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+    </div>
   </footer>
 </body>
 </html>
