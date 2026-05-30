@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artifact 8 - Generative AI LLM Infrastructure and Training Costs</title>
+
+  <style>
+    :root {
+      --bg: #0b111a;
+      --card: #111827;
+      --card-2: #0f172a;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: #334155;
+      --soft: rgba(56, 189, 248, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #070d14;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 54px 24px;
+    }
+
+    .artifact-card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 34px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      border: 1px solid #60a5fa;
+      color: #e0f2fe;
+      background: rgba(37, 99, 235, 0.14);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+      color: var(--text);
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 38px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 19px;
+      margin-top: 28px;
+      color: #e0f2fe;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 16px;
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 24px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .visual-section {
+      margin-top: 28px;
+      padding: 18px;
+      background: #f8fafc;
+      border-radius: 14px;
+      border: 1px solid #dbeafe;
+    }
+
+    .visual-section img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .caption {
+      color: #1e293b;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .highlight {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .reflection {
+      background: rgba(34, 197, 94, 0.1);
+      border-left: 4px solid var(--accent-2);
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .references {
+      font-size: 14px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .references a {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 16px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav a {
+        margin-left: 0;
+        margin-right: 16px;
+      }
+
+      .artifact-card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Sandeep · AI/ML Portfolio</div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../value-proposition.html">Value Proposition</a>
+        <a href="../artifacts.html">Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="artifact-card">
+      <div class="tags">
+        <span class="tag">AIML-501</span>
+        <span class="tag">Workshop 3</span>
+        <span class="tag">Portfolio Artifact</span>
+        <span class="tag">Generative AI</span>
+      </div>
+
+      <h1>Artifact 8 - Generative AI LLM Infrastructure and Training Costs</h1>
+
+      <p>
+        <strong>Introduction:</strong> This artifact presents a visual explanation of how advanced
+        generative AI large language models are trained and what major resources are required in the
+        process. It focuses on the full training pipeline of LLMs, beginning with data collection and
+        continuing through data cleaning, tokenization, pretraining, fine-tuning, safety testing,
+        deployment, and monitoring.
+      </p>
+
+      <p>
+        Large language models such as GPT, Claude, Gemini, and LLaMA are powerful because they are
+        trained on large datasets using advanced neural network architectures and large-scale computing
+        infrastructure. However, their development requires more than algorithms. It also depends on
+        access to high-quality data, expensive hardware, skilled professionals, energy, and long-term
+        operational support.
+      </p>
+
+      <h2>Objective</h2>
+      <ul>
+        <li>Illustrate the major stages involved in training generative AI large language models.</li>
+        <li>Explain the main resource categories required for LLM development and deployment.</li>
+        <li>Show how infrastructure, compute power, energy, and time influence AI model development.</li>
+        <li>Present a professional visual artifact that communicates complex AI concepts clearly.</li>
+        <li>Connect LLM training infrastructure to real-world models such as GPT, Claude, Gemini, and LLaMA.</li>
+      </ul>
+
+      <h2>Artifact Visual Framework</h2>
+      <p>
+        The infographic below explains the LLM training process using a structured visual framework.
+        It is divided into two main parts. The first part presents the LLM training pipeline, including
+        data collection, data cleaning, tokenization, pretraining, fine-tuning, safety testing, deployment,
+        and monitoring. The second part presents the main cost categories, including data, compute,
+        energy, human labor, time, and maintenance.
+      </p>
+
+      <p>
+        The purpose of this visual is to simplify a complex topic and make it understandable for students,
+        instructors, and future employers who want to understand how generative AI systems are built and
+        supported.
+      </p>
+
+      <div class="visual-section">
+        <img src="../assets/artifact-08-llm-training-pipeline.png" alt="Infographic showing the LLM training pipeline and main cost categories including data, compute, energy, human labor, time, and maintenance." />
+        <div class="caption">Figure 1. LLM Training Pipeline and Main Cost Categories</div>
+      </div>
+
+      <h2>Explanation of the Training Pipeline</h2>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>1. Data Collection</h3>
+          <p>
+            LLMs require large and diverse datasets that may include web text, books, articles,
+            technical documentation, code, and other language-based content. The quality and diversity
+            of this data strongly influence model performance.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>2. Data Cleaning</h3>
+          <p>
+            Raw data must be cleaned and filtered to remove duplicate content, spam, low-quality text,
+            unsafe material, and unnecessary noise. This improves model reliability and reduces harmful
+            patterns.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>3. Tokenization</h3>
+          <p>
+            Tokenization converts text into smaller units called tokens. These tokens allow language to
+            be processed mathematically during model training.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>4. Pretraining</h3>
+          <p>
+            Pretraining is the largest and most compute-intensive stage. During this phase, the model
+            learns language patterns by predicting the next token across very large datasets.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>5. Fine-Tuning</h3>
+          <p>
+            Fine-tuning helps the model become more useful for tasks such as instruction-following and
+            conversation. This may involve supervised fine-tuning and reinforcement learning from human
+            feedback.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>6. Safety Testing and Deployment</h3>
+          <p>
+            Safety testing checks for harmful outputs, bias, hallucinations, and misuse risks. After
+            testing, the model can be deployed through chat interfaces, applications, or APIs.
+          </p>
+        </div>
+      </div>
+
+      <h2>Main Resource and Cost Categories</h2>
+
+      <p>
+        Training generative AI models requires several major resource categories. These costs continue
+        even after training because deployed models must be hosted, monitored, updated, and improved.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Data</h3>
+          <p>
+            Data costs include collecting, licensing, cleaning, labeling, filtering, storing, and managing
+            datasets. Good data is essential because the model learns directly from it.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Compute</h3>
+          <p>
+            Compute refers to GPUs, AI accelerators, data centers, storage, and networking. This is often
+            one of the most expensive parts of LLM development.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Energy</h3>
+          <p>
+            Large GPU clusters require significant electricity. Data centers also need cooling systems,
+            which adds to energy demand during training and inference.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Human Labor</h3>
+          <p>
+            Researchers, machine learning engineers, data engineers, annotators, and safety reviewers
+            support the full model development process.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Time</h3>
+          <p>
+            Training and improving large models can take weeks or months depending on model size, data
+            volume, hardware availability, and the number of experiments needed.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Maintenance</h3>
+          <p>
+            After deployment, LLMs need hosting, monitoring, updates, safety improvements, and inference
+            resources for every user request.
+          </p>
+        </div>
+      </div>
+
+      <h2>Examples of Generative AI Models</h2>
+      <p>
+        This training pipeline applies to major generative AI systems such as OpenAI GPT models,
+        Anthropic Claude, Google Gemini, and Meta LLaMA. While full training details are not always
+        publicly available for every model, these examples show that modern LLMs require large-scale
+        data, compute resources, energy, and human oversight.
+      </p>
+
+      <div class="highlight">
+        <p>
+          For example, GPT models are trained through large-scale pretraining and alignment processes.
+          Meta’s LLaMA models also demonstrate the importance of massive token counts, large GPU usage,
+          and extensive computation. Even when companies do not publish exact cost figures, it is clear
+          that advanced generative AI systems require significant infrastructure investment.
+        </p>
+      </div>
+
+      <h2>Why This Artifact Matters</h2>
+      <p>
+        This artifact is important because it shows that generative AI is not only about smart outputs.
+        It also depends on a full system of infrastructure, people, hardware, and responsible design.
+        Many users interact with AI tools without seeing the hidden complexity behind them. This artifact
+        helps make that process visible.
+      </p>
+
+      <p>
+        It also demonstrates the importance of clear visual communication in AI and machine learning.
+        Technical topics can become easier to understand when they are organized visually into steps,
+        categories, and relationships.
+      </p>
+
+      <h2>Portfolio Reflection</h2>
+      <div class="reflection">
+        <p>
+          For this portfolio artifact, I created a visual framework that explains the training pipeline
+          and major resource costs behind generative AI large language models. I wanted to present a
+          complex AI infrastructure topic in a way that is visually clear, structured, and easy to understand.
+        </p>
+
+        <p>
+          During the creation process, I learned that LLM development requires more than large datasets
+          and advanced algorithms. It also requires large-scale compute power, energy, time, human
+          expertise, safety evaluation, and ongoing maintenance. One of the main challenges was
+          simplifying a technical and broad topic without losing important meaning. I addressed this by
+          dividing the artifact into two major sections: the training process and the resource cost categories.
+        </p>
+
+        <p>
+          This artifact strengthens my portfolio by demonstrating my ability to communicate AI
+          infrastructure concepts visually and professionally.
+        </p>
+      </div>
+
+      <h2>References</h2>
+      <div class="references">
+        <p>
+          AI@Meta. (2024). <em>Llama 3 model card</em>. GitHub.
+          <a href="https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md" target="_blank">https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md</a>
+        </p>
+
+        <p>
+          OpenAI. (2023). <em>GPT-4 technical report</em>. arXiv.
+          <a href="https://arxiv.org/abs/2303.08774" target="_blank">https://arxiv.org/abs/2303.08774</a>
+        </p>
+
+        <p>
+          OpenAI. (2026). <em>How ChatGPT and our foundation models are developed</em>. OpenAI Help Center.
+          <a href="https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-language-models-are-developed" target="_blank">https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-language-models-are-developed</a>
+        </p>
+      </div>
+
+      <h2>AI Usage Statement</h2>
+      <p class="muted">
+        Generative AI tools were used to support brainstorming, outlining, and improving the structure
+        of this portfolio artifact. The final content was reviewed, edited, and completed in my own words
+        based on my understanding of generative AI training pipelines, LLM infrastructure, data requirements,
+        compute resources, energy use, and model development costs.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Sandeep Sudesh Kumar · AI/ML Portfolio
+  </footer>
+</body>
+</html>
