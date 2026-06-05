@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Artifact 9 - Explainable AI and Trustworthy Generative Models</title>
+
+  <style>
+    :root {
+      --bg: #070d13;
+      --card: #101827;
+      --card-2: #0d1522;
+      --text: #ffffff;
+      --muted: #d7e3f4;
+      --accent: #4da3ff;
+      --border: #263b55;
+      --soft: #132238;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: #5eb3ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #070d13;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .nav-links a {
+      margin-left: 22px;
+      font-size: 14px;
+      color: #43b4ff;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 54px auto;
+      padding: 0 24px;
+    }
+
+    .artifact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .pill {
+      border: 1px solid #5baaff;
+      color: #ffffff;
+      background: #102342;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    p {
+      color: #ffffff;
+      font-size: 15px;
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin-top: 8px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    strong {
+      color: #ffffff;
+    }
+
+    .visual-frame {
+      margin-top: 24px;
+      background: #ffffff;
+      border: 10px solid #f0f4fb;
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .visual-frame img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+
+    .caption {
+      color: #dbe8f8;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .info-box {
+      background: var(--card-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 17px;
+    }
+
+    .info-box p {
+      margin-bottom: 0;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    .reference-list li {
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .button-row {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid #31577d;
+      background: #0b1b2e;
+      color: #75c4ff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .button:hover {
+      background: #102b49;
+      text-decoration: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      margin-top: 80px;
+      color: #ffffff;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: 14px;
+    }
+
+    .footer-inner a {
+      margin: 0 10px;
+      color: #5eb3ff;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        margin-left: 0;
+        margin-right: 14px;
+      }
+
+      main {
+        margin-top: 32px;
+      }
+
+      .artifact-card {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="brand">Sandeep · AI/ML Portfolio</div>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../value.html">Value Proposition</a>
+        <a href="../artifacts.html">Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="artifact-card">
+
+      <div class="pill-row">
+        <span class="pill">AIML-501</span>
+        <span class="pill">Workshop 4</span>
+        <span class="pill">Portfolio Artifact</span>
+        <span class="pill">Explainable AI</span>
+      </div>
+
+      <h1>Artifact 9 - Explainable AI: Building Trust in Generative AI</h1>
+
+      <p>
+        <strong>Introduction:</strong> This artifact presents a visual explanation of Explainable AI,
+        also known as XAI, and how it supports trust in generative AI systems. It focuses on large
+        language models such as GPT, Claude, Gemini, and LLaMA, which can generate powerful responses
+        but are often difficult to interpret because of their complex internal structures.
+      </p>
+
+      <p>
+        Explainable AI is important because users, organizations, and decision-makers need to understand
+        how AI systems produce outputs, especially when those outputs influence high-impact areas such
+        as healthcare, finance, education, law, hiring, and business operations. This artifact connects
+        explainability with validation, performance metrics, safety testing, and responsible AI practices.
+      </p>
+
+      <h2>Objective</h2>
+      <ul>
+        <li>Define Explainable AI in a clear and non-technical way.</li>
+        <li>Explain why transparency is important when using generative AI systems.</li>
+        <li>Identify major challenges in interpreting outputs from large language models.</li>
+        <li>Show how validation methods and performance metrics improve trust and reliability.</li>
+        <li>Summarize current industry efforts used by OpenAI, Anthropic, Google, and Meta to improve AI transparency.</li>
+        <li>Create a professional visual artifact that communicates responsible AI concepts clearly.</li>
+      </ul>
+
+      <h2>Artifact Visual Framework</h2>
+
+      <p>
+        The infographic below explains Explainable AI using a structured visual framework. It begins by
+        defining XAI as the process of making AI outputs and decisions understandable to humans. It then
+        explains why explainability matters by connecting it to trust, fairness, accountability, and safety.
+      </p>
+
+      <p>
+        The visual also highlights common challenges in explaining large language models, including
+        black-box complexity, hallucinations, bias in training data, post-hoc explanations, and regulatory
+        concerns. The second half of the artifact shows how validation methods and performance metrics
+        help evaluate reliability. It also summarizes industry approaches such as system cards, model cards,
+        red teaming, safety evaluations, constitutional AI, and benchmark testing.
+      </p>
+
+      <div class="visual-frame">
+        <img src="artifact-09-explainable-ai.png" alt="Explainable AI infographic showing transparency, validation, performance metrics, challenges, and industry solutions">
+      </div>
+
+      <p class="caption">
+        Figure 1. Explainable AI: Building Trust in Generative AI
+      </p>
+
+      <h2>Key Concepts Explained</h2>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>Explainable AI</h3>
+          <p>
+            Explainable AI focuses on making model outputs understandable so users can better evaluate
+            whether an AI response is reliable, fair, and appropriate.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>Transparency</h3>
+          <p>
+            Transparency helps users understand the factors, limitations, and uncertainty behind AI-generated
+            outputs instead of treating the model as a perfect authority.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>Validation</h3>
+          <p>
+            Validation tests whether an AI model performs reliably across new data, unusual prompts,
+            bias tests, adversarial inputs, and edge cases.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>Performance Metrics</h3>
+          <p>
+            Metrics such as accuracy, precision, recall, F1 score, human evaluation, and red teaming help
+            measure model quality and identify areas for improvement.
+          </p>
+        </div>
+      </div>
+
+      <h2>Challenges in Explainability</h2>
+
+      <p>
+        Generative AI models are challenging to explain because their outputs come from complex,
+        non-linear relationships learned from large datasets. Unlike a simple rule-based system, a large
+        language model does not usually provide one clear reason for its response. This creates a
+        black-box problem where the output may be useful, but the reasoning behind it is difficult to verify.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Black-box complexity:</strong> LLMs use millions or billions of parameters, making it hard
+          to trace a single explanation for an output.
+        </li>
+        <li>
+          <strong>Post-hoc explanations:</strong> Explanations may be created after the output and may not
+          fully represent the model’s actual internal process.
+        </li>
+        <li>
+          <strong>Bias in training data:</strong> Models can reflect social, cultural, or historical biases
+          found in the data used during training.
+        </li>
+        <li>
+          <strong>Hallucinations:</strong> Models may generate incorrect information that sounds confident
+          and well-written.
+        </li>
+        <li>
+          <strong>Regulatory concerns:</strong> In high-impact fields, organizations may need to explain
+          how AI-supported decisions are made.
+        </li>
+      </ul>
+
+      <h2>Validation and Performance Metrics</h2>
+
+      <p>
+        Validation and performance metrics are important because explainability alone does not prove that
+        a model is reliable. A model must also be tested to ensure that it performs well across different
+        inputs, users, and situations. Validation methods help confirm whether a model generalizes beyond
+        the examples it was trained on.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Accuracy:</strong> Measures how often the model is correct overall.
+        </li>
+        <li>
+          <strong>Precision:</strong> Measures how often the model is correct when it makes a positive prediction.
+        </li>
+        <li>
+          <strong>Recall:</strong> Measures how well the model finds all actual positive cases.
+        </li>
+        <li>
+          <strong>F1 Score:</strong> Balances precision and recall into one combined metric.
+        </li>
+        <li>
+          <strong>Human Evaluation:</strong> Uses human reviewers to judge usefulness, safety, clarity, and accuracy.
+        </li>
+        <li>
+          <strong>Red Teaming:</strong> Tests the model with difficult or adversarial prompts to find weaknesses.
+        </li>
+        <li>
+          <strong>Bias and Edge Case Testing:</strong> Checks whether the model behaves fairly and consistently
+          across different groups and unusual scenarios.
+        </li>
+      </ul>
+
+      <h2>Industry Approaches to Explainability</h2>
+
+      <p>
+        Leading AI organizations use different approaches to improve transparency and responsible AI
+        development. These methods do not completely solve the explainability problem, but they help users,
+        researchers, and organizations better understand model behavior and limitations.
+      </p>
+
+      <ul>
+        <li>
+          <strong>OpenAI:</strong> Uses system cards, red teaming, safety evaluations, and model behavior testing
+          to document risks and limitations.
+        </li>
+        <li>
+          <strong>Anthropic:</strong> Uses Constitutional AI and safety principles to guide model behavior and
+          improve harmlessness.
+        </li>
+        <li>
+          <strong>Google:</strong> Uses model cards, responsible AI practices, and evaluation documentation to
+          communicate model performance and limitations.
+        </li>
+        <li>
+          <strong>Meta:</strong> Publishes LLaMA model cards and benchmark evaluations to provide transparency
+          about model capabilities and risks.
+        </li>
+      </ul>
+
+      <h2>Artifact-Specific Value Proposition</h2>
+
+      <p>
+        This artifact demonstrates my ability to communicate complex AI concepts in a clear and professional
+        way. It shows my understanding of Explainable AI, generative AI limitations, validation techniques,
+        model evaluation, responsible AI practices, and visual communication.
+      </p>
+
+      <p>
+        The artifact is valuable because explainability is becoming increasingly important in AI-related
+        careers. Employers need professionals who can not only work with AI tools but also understand how
+        to evaluate their reliability, communicate their limitations, and support ethical implementation.
+      </p>
+
+      <h2>Customization for Audience</h2>
+
+      <p>
+        This artifact was designed for students, instructors, and future employers who may not have deep
+        technical knowledge of generative AI. I used simple language, short sections, and a visual layout
+        to make the topic accessible. Instead of focusing only on technical formulas, the artifact explains
+        how explainability, validation, and performance metrics work together to build trustworthy AI.
+      </p>
+
+      <p>
+        The design also supports portfolio use because it presents technical understanding in a clean and
+        professional format. This helps demonstrate both AI/ML knowledge and the ability to communicate
+        clearly with non-technical stakeholders.
+      </p>
+
+      <h2>Reflection</h2>
+
+      <p>
+        I chose this topic because Explainable AI is one of the most important areas in modern artificial
+        intelligence. As generative AI systems become more common, users need to know when to trust an
+        AI response, when to question it, and how to evaluate its reliability. This artifact helped me connect
+        model explainability with validation, performance metrics, and responsible AI practices.
+      </p>
+
+      <p>
+        Through this artifact, I learned that trustworthy AI requires more than producing fluent or
+        impressive answers. A reliable AI system should be explainable, validated, fair, safe, and monitored.
+        I also learned that performance metrics such as accuracy, precision, recall, and F1 score are not
+        just technical measurements. They help organizations understand whether AI systems are dependable
+        enough for real-world use.
+      </p>
+
+      <h2>Feedback and Revisions</h2>
+
+      <p>
+        This artifact was reviewed for clarity, structure, and visual organization. I focused on making the
+        explanation understandable for a broad audience while still including important AI/ML concepts.
+        I revised the content by simplifying technical language, grouping related ideas together, and making
+        the visual artifact easier to follow.
+      </p>
+
+      <p>
+        The final version connects the major parts of trustworthy AI: explainability, validation, performance
+        metrics, bias testing, red teaming, and industry transparency efforts. These revisions helped make
+        the artifact more professional and suitable for my AI/ML portfolio.
+      </p>
+
+      <h2>References</h2>
+
+      <ul class="reference-list">
+        <li>Anthropic. (n.d.). Constitutional AI and model safety resources.</li>
+        <li>Google DeepMind. (n.d.). Model cards and responsible AI documentation.</li>
+        <li>Meta. (n.d.). LLaMA model cards and benchmark evaluation resources.</li>
+        <li>OpenAI. (n.d.). System cards, red teaming, safety evaluations, and responsible AI resources.</li>
+      </ul>
+
+      <h2>AI Usage Statement</h2>
+
+      <p>
+        Generative AI tools were used to support brainstorming, outlining, and improving the organization
+        of this portfolio artifact. I used AI assistance to help clarify concepts related to Explainable AI,
+        validation, performance metrics, and responsible AI practices. The final content was reviewed,
+        edited, and completed by me based on my understanding of AI explainability, model evaluation,
+        and trustworthy generative AI systems.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="../artifacts.html">Back to Artifacts</a>
+        <a class="button" href="../index.html">Back to Home</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      © 2026 Sandeep Sudesh Kumar
+      · <a href="mailto:sandeep.sudeshkumar@myemail.indwes.edu">Email</a>
+      · <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+      · <a href="https://github.com/" target="_blank">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>
