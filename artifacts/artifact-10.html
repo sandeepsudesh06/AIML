@@ -1,0 +1,566 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Artifact 10 - Pre-Trained AI Model Decision Matrix</title>
+
+  <style>
+    :root {
+      --bg: #0b1118;
+      --panel: #111a26;
+      --panel-border: #263b57;
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #2dd4bf;
+      --chip-bg: #0f2236;
+      --chip-border: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      border-bottom: 1px solid #263241;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #080d13;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--accent-2);
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+
+    .artifact-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .chip {
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
+      color: #dbeafe;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin: 10px 0 18px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 36px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: #e0f2fe;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    ul {
+      padding-left: 26px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: #ffffff;
+    }
+
+    .highlight-box {
+      background: #0f2236;
+      border-left: 4px solid var(--accent-2);
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 22px;
+      border-radius: 10px;
+      border: 1px solid #2d425f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+      background: #0d1622;
+    }
+
+    th {
+      background: #10243a;
+      color: #ffffff;
+      padding: 14px;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: 1px solid #2d425f;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #22344d;
+      vertical-align: top;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .green {
+      background: rgba(45, 212, 191, 0.18);
+      color: #5eead4;
+      border: 1px solid rgba(45, 212, 191, 0.45);
+    }
+
+    .yellow {
+      background: rgba(250, 204, 21, 0.15);
+      color: #fde68a;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+    }
+
+    .orange {
+      background: rgba(251, 146, 60, 0.15);
+      color: #fdba74;
+      border: 1px solid rgba(251, 146, 60, 0.4);
+    }
+
+    .blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .footer-note {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #263b57;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .artifact-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Sandeep · AI/ML Portfolio</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../value-proposition.html">Value Proposition</a>
+      <a href="../artifacts.html">Artifacts</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="artifact-card">
+
+      <div class="chips">
+        <span class="chip">AIML-501</span>
+        <span class="chip">Workshop 5</span>
+        <span class="chip">Portfolio Artifact</span>
+      </div>
+
+      <h1>Artifact 10 - Pre-Trained AI Model Decision Matrix</h1>
+
+      <p>
+        <strong>Introduction:</strong> This artifact presents a decision matrix for comparing pre-trained and reusable AI models across different domains, including Natural Language Processing, Computer Vision, and Tabular Data. The goal of this artifact is to analyze how model size, accuracy, inference speed, and explainability affect model selection in real-world AI applications.
+      </p>
+
+      <p>
+        Modern AI systems are not selected based only on accuracy. A model may be highly accurate but too large, slow, costly, or difficult to explain. In professional AI and machine learning work, model selection requires balancing performance, computational requirements, deployment speed, transparency, and business value.
+      </p>
+
+      <h2>Objective</h2>
+
+      <ul>
+        <li>Compare selected pre-trained and reusable AI models across NLP, computer vision, and tabular data domains.</li>
+        <li>Analyze trade-offs between model size, accuracy, speed, and explainability.</li>
+        <li>Create a decision matrix that supports practical model selection.</li>
+        <li>Connect model characteristics to real-world business and technical use cases.</li>
+        <li>Present the analysis in a professional portfolio format for both technical and non-technical audiences.</li>
+      </ul>
+
+      <h2>Methodology</h2>
+
+      <p>
+        For this artifact, I selected models from three important AI application areas: NLP/Generative AI, Computer Vision, and Tabular Data. The selected models represent different types of AI systems and deployment needs. BERT Base was selected for language understanding, MobileNetV2 and EfficientNet-B0 were selected for image classification, and LightGBM and XGBoost were selected for structured business data.
+      </p>
+
+      <p>
+        The models were compared using five criteria: model size, accuracy or performance, inference speed, explainability, and best use case. This approach makes the comparison practical because real-world AI projects often require trade-offs between technical performance and business constraints.
+      </p>
+
+      <h2>Decision Matrix</h2>
+
+      <p>
+        The decision matrix below compares the selected models across the major factors that influence AI model selection. It highlights that the best model is not always the largest or most advanced model. Instead, the best model depends on the type of data, business goal, deployment environment, speed requirement, and explainability need.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Domain</th>
+              <th>Model Size</th>
+              <th>Accuracy / Performance</th>
+              <th>Speed</th>
+              <th>Explainability</th>
+              <th>Best Use Case</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><strong>BERT Base</strong></td>
+              <td>NLP / Language Understanding</td>
+              <td>
+                <span class="tag orange">Large</span><br>
+                About 110M parameters
+              </td>
+              <td>
+                <span class="tag green">Strong</span><br>
+                Effective for classification, question answering, and text understanding
+              </td>
+              <td>
+                <span class="tag yellow">Medium</span><br>
+                Requires more compute than traditional ML models
+              </td>
+              <td>
+                <span class="tag yellow">Medium to Low</span><br>
+                Complex transformer architecture
+              </td>
+              <td>
+                Sentiment analysis, search, document understanding, and text classification
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>MobileNetV2</strong></td>
+              <td>Computer Vision</td>
+              <td>
+                <span class="tag green">Small</span><br>
+                Lightweight CNN architecture
+              </td>
+              <td>
+                <span class="tag yellow">Good</span><br>
+                Strong for mobile and edge image tasks
+              </td>
+              <td>
+                <span class="tag green">Fast</span><br>
+                Designed for efficient inference
+              </td>
+              <td>
+                <span class="tag yellow">Medium</span><br>
+                Can use Grad-CAM or saliency maps
+              </td>
+              <td>
+                Mobile apps, edge AI, real-time image classification, and camera-based tools
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>EfficientNet-B0</strong></td>
+              <td>Computer Vision</td>
+              <td>
+                <span class="tag blue">Small to Medium</span><br>
+                Efficiently scaled CNN model
+              </td>
+              <td>
+                <span class="tag green">High</span><br>
+                Strong balance between accuracy and efficiency
+              </td>
+              <td>
+                <span class="tag green">Medium to Fast</span><br>
+                Efficient for many deployment environments
+              </td>
+              <td>
+                <span class="tag yellow">Medium</span><br>
+                Visual explanation tools can support interpretation
+              </td>
+              <td>
+                Image classification where accuracy and efficiency both matter
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>LightGBM</strong></td>
+              <td>Tabular Data</td>
+              <td>
+                <span class="tag blue">Small to Medium</span><br>
+                Depends on number of trees and features
+              </td>
+              <td>
+                <span class="tag green">Very Strong</span><br>
+                Excellent for structured business datasets
+              </td>
+              <td>
+                <span class="tag green">Very Fast</span><br>
+                Optimized for efficient training and prediction
+              </td>
+              <td>
+                <span class="tag green">High</span><br>
+                Supports feature importance and SHAP explanations
+              </td>
+              <td>
+                Customer churn, fraud detection, risk scoring, and sales prediction
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>XGBoost</strong></td>
+              <td>Tabular Data</td>
+              <td>
+                <span class="tag blue">Medium</span><br>
+                Depends on tree depth and estimators
+              </td>
+              <td>
+                <span class="tag green">Very Strong</span><br>
+                Reliable and widely used predictive performance
+              </td>
+              <td>
+                <span class="tag green">Fast</span><br>
+                Efficient for many structured datasets
+              </td>
+              <td>
+                <span class="tag green">High</span><br>
+                Supports feature importance and SHAP explanations
+              </td>
+              <td>
+                Finance, healthcare, forecasting, classification, and business analytics
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Trade-Off Analysis</h2>
+
+      <h3>BERT Base</h3>
+      <p>
+        BERT Base is a powerful language model designed for natural language understanding. It performs well on tasks such as text classification, question answering, and document analysis. Its main strength is its ability to understand context in text. However, BERT is larger and slower than traditional machine learning models, and it is harder to explain because of its complex transformer-based architecture.
+      </p>
+
+      <h3>MobileNetV2</h3>
+      <p>
+        MobileNetV2 is designed for efficient computer vision tasks. It is lightweight, fast, and useful for mobile or edge-device deployment. It is a strong choice when speed and low resource usage are more important than achieving the highest possible accuracy. Its main limitation is that it may not perform as strongly as larger vision models on complex image recognition tasks.
+      </p>
+
+      <h3>EfficientNet-B0</h3>
+      <p>
+        EfficientNet-B0 provides a strong balance between accuracy and efficiency. It is useful when image classification accuracy is important but the project still needs a practical and efficient model. Compared with very lightweight models, it may require slightly more computing resources, but it often provides stronger performance.
+      </p>
+
+      <h3>LightGBM</h3>
+      <p>
+        LightGBM is a gradient boosting framework designed for structured and tabular datasets. It is known for fast training, strong performance, and practical deployment. LightGBM is also more explainable than many deep learning models because feature importance and SHAP values can help explain which variables influenced predictions.
+      </p>
+
+      <h3>XGBoost</h3>
+      <p>
+        XGBoost is a powerful and reliable gradient boosting framework for tabular machine learning tasks. It is widely used because it provides strong predictive performance and supports explainability through feature importance and SHAP analysis. It is a good choice when accuracy, reliability, and interpretability are important.
+      </p>
+
+      <h2>Recommendations by Scenario</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Recommended Model</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Text classification or question answering</td>
+              <td><strong>BERT Base</strong></td>
+              <td>Strong contextual language understanding</td>
+            </tr>
+
+            <tr>
+              <td>Mobile image recognition</td>
+              <td><strong>MobileNetV2</strong></td>
+              <td>Fast, lightweight, and suitable for edge devices</td>
+            </tr>
+
+            <tr>
+              <td>Image classification with better accuracy</td>
+              <td><strong>EfficientNet-B0</strong></td>
+              <td>Strong balance between accuracy and efficiency</td>
+            </tr>
+
+            <tr>
+              <td>Large structured business dataset</td>
+              <td><strong>LightGBM</strong></td>
+              <td>Very fast, efficient, and explainable</td>
+            </tr>
+
+            <tr>
+              <td>High-performance tabular prediction</td>
+              <td><strong>XGBoost</strong></td>
+              <td>Reliable, accurate, and widely used</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Explainability Considerations</h2>
+
+      <p>
+        Explainability is an important part of responsible AI model selection. Models used in real-world decision-making should not only produce accurate predictions but also provide understandable reasons for those predictions.
+      </p>
+
+      <p>
+        Tree-based models such as LightGBM and XGBoost are generally more explainable because feature importance and SHAP values can show which variables contributed most to the prediction. Computer vision models such as MobileNetV2 and EfficientNet-B0 are moderately explainable using tools like saliency maps or Grad-CAM. Transformer-based NLP models such as BERT are powerful but less transparent because they contain many layers and attention mechanisms that are difficult to interpret directly.
+      </p>
+
+      <div class="highlight-box">
+        <strong>Key Insight:</strong> The best model is not always the largest or most advanced model. The best model is the one that fits the business problem, technical environment, deployment requirements, and explainability needs.
+      </div>
+
+      <h2>Conclusion</h2>
+
+      <p>
+        This artifact helped me understand that model selection is a trade-off between accuracy, speed, size, explainability, and deployment requirements. Larger models may provide stronger performance, but they can be slower, more expensive, and harder to explain. Smaller models may be faster and easier to deploy, but they may sacrifice some accuracy.
+      </p>
+
+      <p>
+        For business datasets, LightGBM and XGBoost are strong choices because they provide accuracy, speed, and better explainability. For mobile or real-time image tasks, MobileNetV2 is a practical choice because it is lightweight and fast. For image classification tasks where accuracy is more important, EfficientNet-B0 provides a good balance. For natural language understanding tasks, BERT Base is useful because it provides strong contextual understanding of text.
+      </p>
+
+      <p>
+        Overall, this decision matrix provides a practical framework for comparing AI models across NLP, computer vision, and tabular data applications.
+      </p>
+
+      <h2>Skills Demonstrated</h2>
+
+      <ul>
+        <li>AI model comparison and evaluation</li>
+        <li>Pre-trained model selection</li>
+        <li>Decision matrix development</li>
+        <li>Explainable AI analysis</li>
+        <li>NLP, computer vision, and tabular ML understanding</li>
+        <li>Professional portfolio documentation</li>
+      </ul>
+
+      <h2>References</h2>
+
+      <ul>
+        <li>Google Research BERT documentation</li>
+        <li>TensorFlow / Keras MobileNetV2 documentation</li>
+        <li>TensorFlow / Keras EfficientNetB0 documentation</li>
+        <li>LightGBM documentation</li>
+        <li>XGBoost documentation</li>
+        <li>SHAP explainability documentation</li>
+        <li>Scikit-learn feature importance documentation</li>
+      </ul>
+
+      <p class="footer-note">
+        Artifact created as part of my AI/ML professional portfolio to demonstrate model evaluation, decision-making, and explainability analysis across different AI domains.
+      </p>
+
+    </section>
+  </main>
+</body>
+</html>
+```
